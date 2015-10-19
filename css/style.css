@@ -375,3 +375,16 @@ button#stay {
     margin-top: -10px;
     margin-bottom: -90px;
 }
+
+
+#insurance{
+  display:none;
+}
+
+#split{
+  display:none;
+}
+
+#doubledown{
+  display:none;
+}

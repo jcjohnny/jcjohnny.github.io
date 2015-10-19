@@ -49,8 +49,8 @@ $( document ).ready( function() {
 
   $("#play").on('click', function(){
     if (parseInt($("#amount-bet").text()) > 0){
-    $("#hit").toggle();
-    $("#stay").toggle();
+      $("#hit").toggle();
+      $("#stay").toggle();
       $("#play").toggle();
       $("#cardhide").toggle();
       deckOcards.dealCards(playerJohnny.hand);
@@ -64,7 +64,7 @@ $( document ).ready( function() {
       placeCardDealer(cardDealer.hand);
       $("#player-amount").text(playerJohnny.evaluateCards());
       if (cardDealer.hand[1].length === 3){
-        return   $("#dealer-amount").text(cardDealer.hand[1].split("")[0] + cardDealer.hand[1].split("")[1]);
+        return   $("#dealer-amount").text(10);
       } else return $("#dealer-amount").text(cardDealer.hand[1].split("")[0]);
     }
   });
@@ -76,6 +76,7 @@ $( document ).ready( function() {
     if (playerJohnny.bust === true){
       $("#youbusted").css("display", "block");
       $("#amount-bet").text(0);
+        $("#cardhide").toggle();
     }
   });
 
@@ -90,9 +91,9 @@ $( document ).ready( function() {
       $("#youlose").css("display", "block");
       $("#amount-bet").text(0);
     } else
+    $("#amount-bank").text(parseInt($("#amount-bank").text()) + parseInt($("#amount-bet").text()) + parseInt($("#amount-bet").text()));
     $("#youwin").css("display", "block");
-    $("#amount-bet").text(0);
-    $("#amount-bank").text(parseInt($("#amount-bank").text()) + parseInt($("#amount-bet").text()));
+
   });
 
   $(".playagain").on('click', function(){
@@ -104,7 +105,7 @@ $( document ).ready( function() {
     $("#hit").toggle();
     $("#stay").toggle();
     $("#play").toggle();
-$(".card-design").removeClass().empty();
+    $(".card-design").removeClass().empty();
   });
 
   $(".notagain").on('click', function(){

@@ -49,13 +49,12 @@ $( document ).ready( function() {
 
   $("#play").on('click', function(){
     if (parseInt($("#amount-bet").text()) > 0){
-    $("#hit").toggle();
-    $("#stay").toggle();
+      $("#hit").toggle();
+      $("#stay").toggle();
       $("#play").toggle();
       $("#cardhide").toggle();
       deckOcards.dealCards(playerJohnny.hand);
       placeCardPlayer(playerJohnny.hand);
-
       deckOcards.dealCards(cardDealer.hand);
       placeCardDealer(cardDealer.hand);
       deckOcards.dealCards(playerJohnny.hand);
@@ -74,6 +73,7 @@ $( document ).ready( function() {
     placeCardPlayer(playerJohnny.hand);
     $("#player-amount").text(playerJohnny.evaluateCards());
     if (playerJohnny.bust === true){
+      $("#cardhide").css("display", "block");
       $("#youbusted").css("display", "block");
       $("#amount-bet").text(0);
     }
@@ -104,7 +104,7 @@ $( document ).ready( function() {
     $("#hit").toggle();
     $("#stay").toggle();
     $("#play").toggle();
-$(".card-design").removeClass().empty();
+    $(".card-design").removeClass().empty();
   });
 
   $(".notagain").on('click', function(){
@@ -113,9 +113,9 @@ $(".card-design").removeClass().empty();
     $("#youlose").css("display", "none");
     $("#youwin").css("display", "none");
     $("#youbusted").css("display", "none");
-    $("#hit").toggle();
-    $("#stay").toggle();
-    $("#play").toggle();
+    // $("#hit").toggle();
+    // $("#stay").toggle();
+    // $("#play").toggle();
     $("#blackjack").css("display", "block");
     $(".card-design").removeClass().empty();
 
@@ -179,7 +179,7 @@ function handCount(cards){
     } else handEval += parseInt((cards[i].split("")[0]));
   }
   if (secondHandEval > 0){
-    this.secondHand = secondHandEval;
+    console.log(handEval + secondHandEval);
   } else return handEval;
 
 }
