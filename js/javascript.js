@@ -87,14 +87,16 @@ $( document ).ready( function() {
       placeCardDealer(cardDealer.hand);
       $("#dealer-amount").text(cardDealer.evaluateCards());
     }
-    if ( cardDealer.evaluateCards() > playerJohnny.evaluateCards()){
-      $("#youlose").css("display", "block");
+    var currentDealerHand = cardDealer.evaluateCards() ;
+    var currentPlayerHand = playerJohnny.evaluateCards();
+    if (currentDealerHand <= 21 && currentDealerHand < currentPlayerHand  ){
+      $("#youwin").css("display", "block");
       $("#amount-bet").text(0);
-    } else
-    $("#amount-bank").text(parseInt($("#amount-bank").text()) + parseInt($("#amount-bet").text()) + parseInt($("#amount-bet").text()));
-    $("#youwin").css("display", "block");
-
+      $("#amount-bank").text(parseInt($("#amount-bank").text()) + parseInt($("#amount-bet").text()));
+    } else $("#youlose").css("display", "block");
+    $("#amount-bet").text(0);
   });
+
 
   $(".playagain").on('click', function(){
     playerJohnny.hand = [];
